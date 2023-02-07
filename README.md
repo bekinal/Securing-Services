@@ -12,112 +12,144 @@ Project consists of making existing installed services more secure. This is acco
 - <b>Terminal</b>
 
 <h2>Files</h2>
+
 - <b>putty.zip</b>
 - <b>WinSCP-5.19.5-Setup</b>
 
 <h2>SSH Hardening:</h2>
-:<br/>
-<img src="https://imagizer.imageshack.com/img923/6938/uEOPXL.png"
+SSH will be enahnced and secured by setting connection limitations and port configuration. This project is completed assuming that a VirtualBox machine is used for both Debian and Windows environments; as well as a bridged connection established between the two.
 <br />
 <br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img922/3116/ScBy2k.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img922/6889/IRpErY.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img923/6438/1QGwrZ.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img924/7930/u4NcRh.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img923/725/lCEhGx.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img923/4453/ngwlI8.png"
-<br />
-<br />
-:<br/>
+On the root user, the SSH service start/status commands are used to verify that SSH is running on the system:<br/>
 <img src="https://imagizer.imageshack.com/img922/3113/30wksm.png"
 <br />
 <br />
-:<br/>
+The putty.exe file is then opened on the Windows machine:<br/>
 <img src="https://imagizer.imageshack.com/img924/296/sNjPQg.png"
 <br />
 <br />
-:<br/>
+The IP address is checked in the Debian environment:<br/>
 <img src="https://imagizer.imageshack.com/img923/4087/xCQFu4.png"
 <br />
 <br />
-:<br/>
+Putty is then started, and the IP for the Debian machine is entered. Port 22 is used:<br/>
 <img src="https://imagizer.imageshack.com/img922/8648/iJje2P.png"
 <br />
 <br />
-:<br/>
+Yes is selected in this next window:<br/>
 <img src="https://imagizer.imageshack.com/img923/5912/tomBGk.png"
 <br />
 <br />
-:<br/>
+Credentials for the Debian user are entered:<br/>
 <img src="https://imagizer.imageshack.com/img923/2092/ViYwPS.png"
 <br />
 <br />
-:<br/>
+After confirming connection to the Debian machine using SSH, the window is closed:<br/>
 <img src="https://imagizer.imageshack.com/img923/844/xt1wZO.png"
 <br />
 <br />
-:<br/>
+The SSHD config file is opened for editing:<br/>
 <img src="https://imagizer.imageshack.com/img923/958/3EV3bq.png"
 <br />
 <br />
-:<br/>
+The port is uncommented and changed to 4567 for testing purposes:<br/>
 <img src="https://imagizer.imageshack.com/img924/1305/MOXJAA.png"
 <br />
 <br />
-:<br/>
+SSH is then restarted and verified as running:<br/>
 <img src="https://imagizer.imageshack.com/img922/7269/Thqn49.png"
 <br />
 <br />
-:<br/>
+Putty is opened again, this time connecting to the Debian machine through port 4567:<br/>
 <img src="https://imagizer.imageshack.com/img923/7646/MczaCY.png"
 <br />
 <br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img922/7469/Yab40q.png"
-<br />
-<br />
-:<br/>
+Providing an incorrect username/password 6 times will create an error message:<br/>
 <img src="https://imagizer.imageshack.com/img924/594/3hGCz8.png"
 <br />
 <br />
-:<br/>
+The SSHD config is opened again in Debain:<br/>
 <img src="https://imagizer.imageshack.com/img923/1751/CRbkTl.png"
 <br />
 <br />
-:<br/>
+The following line is altered to only allow 3 login attempts before locking the system:<br/>
 <img src="https://imagizer.imageshack.com/img922/4367/pVHneH.png"
 <br />
 <br />
-:<br/>
+The SSH service is restarted once again:<br/>
 <img src="https://imagizer.imageshack.com/img923/4986/Murq8a.png"
 <br />
 <br />
-:<br/>
+Using putty again, an incorrect password is entered 3 times. The error message verifies that the changes made are working:<br/>
 <img src="https://imagizer.imageshack.com/img924/3999/dtnmGz.png"
 <br />
 <br />
-:<br/>
+The config file is opened once more, and default settings are restored:<br/>
 <img src="https://imagizer.imageshack.com/img924/640/BTyyQK.png"
 <br />
 <br />
 
-
+<h2>WinSCP Obfuscation:</h2>
+:<br/>
+<img src="https://imagizer.imageshack.com/img924/4879/7sPYBP.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img923/5643/OnJQof.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img923/2732/I9m0Kt.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img924/8066/32EtDN.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img922/4089/40gkjs.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img924/6501/Oo05wx.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img924/6817/yYpknh.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img923/6815/eruNQr.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img923/3091/3t9YM1.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img924/8932/3iyvs0.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img924/7782/PrtmKa.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img923/4876/F7VZgc.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img922/4376/NfX9WQ.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img922/7928/jkwBKi.png"
+<br />
+<br />
+:<br/>
+<img src="https://imagizer.imageshack.com/img922/5449/lbIXLF.png"
+<br />
+<br />
 
 <!--
  ```diff
