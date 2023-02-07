@@ -90,66 +90,75 @@ The config file is opened once more, and default settings are restored:<br/>
 <br />
 
 <h2>WinSCP Obfuscation:</h2>
-:<br/>
-<img src="https://imagizer.imageshack.com/img924/4879/7sPYBP.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img923/5643/OnJQof.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img923/2732/I9m0Kt.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img924/8066/32EtDN.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img922/4089/40gkjs.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img924/6501/Oo05wx.png"
-<br />
-<br />
-:<br/>
-<img src="https://imagizer.imageshack.com/img924/6817/yYpknh.png"
-<br />
-<br />
-:<br/>
+The port number for the FTP connection will be changed, then connected using WinSCP
+<br/>
+<br/>
+The WinSCP installation is opened in windows:<br/>
 <img src="https://imagizer.imageshack.com/img923/6815/eruNQr.png"
 <br />
 <br />
-:<br/>
+The vsftpd service is started on the Debian machine:<br/>
 <img src="https://imagizer.imageshack.com/img923/3091/3t9YM1.png"
 <br />
 <br />
-:<br/>
+In WinSCP, the Debian's IP is entered using port number 21. The login credentials are entered:<br/>
 <img src="https://imagizer.imageshack.com/img924/8932/3iyvs0.png"
 <br />
 <br />
-:<br/>
+The vsftpd config file is opened for editing:<br/>
 <img src="https://imagizer.imageshack.com/img924/7782/PrtmKa.png"
 <br />
 <br />
-:<br/>
+The following line is added under listen=NO: listen_port=222:<br/>
 <img src="https://imagizer.imageshack.com/img923/4876/F7VZgc.png"
 <br />
 <br />
-:<br/>
+The vsftpd service is restarted once more:<br/>
 <img src="https://imagizer.imageshack.com/img922/4376/NfX9WQ.png"
 <br />
 <br />
-:<br/>
+A new connection is established using port 222:<br/>
 <img src="https://imagizer.imageshack.com/img922/7928/jkwBKi.png"
 <br />
 <br />
-:<br/>
+The config file is set back to default:<br/>
 <img src="https://imagizer.imageshack.com/img922/5449/lbIXLF.png"
 <br />
 <br />
+
+<h2>Samba Hardening:</h2>
+The Samaba configuration file will be backed up. The smb.conf file is opened for editing:<br/>
+<img src="https://imagizer.imageshack.com/img924/130/JpllFC.png"
+<br/>
+<br/>
+At the bottom, the guest ok option is set to no. This will prevent anyone from connecting to the share without first providing their credentials:<br/>
+<img src="https://imagizer.imageshack.com/img924/743/dGms50.png"
+<br/>
+<br/>
+The smbd service is restarted:<br/>
+<img src="https://imagizer.imageshack.com/img923/8295/um8wuP.png"
+<br/>
+<br/>
+In file explorer, the Debian path is entered in the search bar. It can be noted that network credentials are now required:<br/>
+<img src="https://imagizer.imageshack.com/img924/5177/m2noz6.png"
+<br/>
+<br/>
+It can also be noted that the user now has read/write access, and can create folders within the directory:<br/>
+<img src="https://imagizer.imageshack.com/img924/4765/2bF9ah.png"
+<br/>
+<br/>
+In the config file, read only is set to yes to prevent users from creating files/folders within the directory:<br/>
+<img src="https://imagizer.imageshack.com/img924/8365/4MRBt8.png"
+<br/>
+<br/>
+Smbd is restarted once more for the changes to take effect:<br/>
+<img src="https://imagizer.imageshack.com/img923/5626/ngVa5P.png"
+<br/>
+<br/>
+Attempting to create a folder now will prompt an Access Deny message:<br/>
+<img src="https://imagizer.imageshack.com/img924/6439/bDdbkz.png"
+<br/>
+<br/>
 
 <!--
  ```diff
